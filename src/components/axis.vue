@@ -1,0 +1,31 @@
+<template>
+  
+                <g ref="axis" :transform='translate' >
+                </g>
+
+</template>
+
+<script>
+
+import * as d3 from "d3";
+export default {
+  name: "axis",
+  props: {
+   scales:Function,
+   chartDefaults:Object
+  },
+
+  data() {
+    return {translate :"translate(0,"+(this.chartDefaults.height)+")"}
+},
+  mounted() {
+  	
+  	var node=this.$refs.axis;
+console.log(this.scales().x);
+
+ d3.select(node).call(d3.axisBottom().scale(this.scales().x));
+
+  }
+}
+</script>
+
