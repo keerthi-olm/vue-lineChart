@@ -7,11 +7,12 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
 
 <template>
   <svg width="800" height="300">
-    <axis v-bind:scales="getScales" v-bind:chartDefaults='chartDefaults' />
-    <g style="transform: translate(0, 10px)">
-      <path :d="line" />
-    </g>
     
+    <g class='test' v-bind:transform="translate">
+      <axis v-bind:scales="xAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data'/>
+    <path :d="line" />
+    </g>
+      
   </svg>
 </template>
 
@@ -46,7 +47,8 @@ export default {
         ]
      
     },
-      line: ""
+      line: "",
+      translate:'translate(' + 50 + ',' + 5 + ')'
     };
   },
   mounted() {
@@ -62,7 +64,7 @@ export default {
   methods: {
 
   getScales() {
-        const x = d3.scaleTime()
+        const x =  d3.scaleTime()
             .domain(d3.extent(this.data, function (d) {
                 return d.date;
             }))
@@ -75,8 +77,35 @@ export default {
       d3.axisBottom().scale(x);
       d3.axisLeft().scale(y);
 
-     
+
+
       return { x, y };
+    },
+
+     xAxis() {
+        const x =  d3.scaleTime()
+            .domain(d3.extent(this.data, function (d) {
+                return d.date;
+            }))
+            .rangeRound([0, this.chartDefaults.width]);
+        const y = d3.scaleLinear()
+            .domain([0,d3.max(this.data,function(d){
+                return d.count+100;
+            })])
+            .range([this.chartDefaults.height, 0]);
+      // d3.axisBottom().scale(x);
+      // d3.axisLeft().scale(y);
+ var xaxis = d3.axisBottom()
+            .scale(x)
+            .tickValues(this.data.map(function(d,i){
+                if(i>0) {
+                    return d.date;
+                } return false;
+            }).splice(1))
+            .ticks(4);
+
+
+      return xaxis ;
     },
     calculatePath() {
     
@@ -94,8 +123,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-svg
-  margin: 105px;
+
 path
   fill: none
   stroke: #76BF8A

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-<svg width="500" height="270">
+
     <LineChart/>
-  </svg>
+
   </div>
 </template>
 

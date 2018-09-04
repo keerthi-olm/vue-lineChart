@@ -16,14 +16,17 @@ export default {
   },
 
   data() {
-    return {translate :"translate(0,"+(this.chartDefaults.height)+")"}
+    return {translate :"translate(0,"+(this.chartDefaults.height - (this.chartDefaults.margin.top + this.chartDefaults.margin.bottom))+")",
+    width:0,
+    height:0
+}
 },
   mounted() {
-  	
+ console.log('--->');
   	var node=this.$refs.axis;
-console.log(this.scales().x);
-
- d3.select(node).call(d3.axisBottom().scale(this.scales().x));
+    // var xScale=this.scales();
+console.log(this.scales());
+ d3.select(node).call(this.scales());
 
   }
 }
