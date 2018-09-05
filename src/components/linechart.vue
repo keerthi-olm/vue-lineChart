@@ -9,7 +9,7 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
   <svg width="800" height="300">
     
     <g class='test' v-bind:transform="translate">
-      <axis v-bind:scales="xAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data'/>
+      <axis v-bind:scales="getScales()" v-bind:chartDefaults='chartDefaults' v-bind:data='data'/>
     <path :d="line" />
     </g>
       
@@ -52,18 +52,20 @@ export default {
     };
   },
   mounted() {
-
+console.log(this.data);
     var scale={};
-    var parseDate = d3.timeParse("%m-%d-%Y");
 
-    this.data.forEach(function(d) {
-      d.date = parseDate(d.day);
-    });
     this.calculatePath();
   },
   methods: {
 
   getScales() {
+      var parseDate = d3.timeParse("%m-%d-%Y");
+
+    this.data.forEach(function(d) {
+      d.date = parseDate(d.day);
+    });
+
         const x =  d3.scaleTime()
             .domain(d3.extent(this.data, function (d) {
                 return d.date;
@@ -77,25 +79,7 @@ export default {
       d3.axisBottom().scale(x);
       d3.axisLeft().scale(y);
 
-
-
-      return { x, y };
-    },
-
-     xAxis() {
-        const x =  d3.scaleTime()
-            .domain(d3.extent(this.data, function (d) {
-                return d.date;
-            }))
-            .rangeRound([0, this.chartDefaults.width]);
-        const y = d3.scaleLinear()
-            .domain([0,d3.max(this.data,function(d){
-                return d.count+100;
-            })])
-            .range([this.chartDefaults.height, 0]);
-      // d3.axisBottom().scale(x);
-      // d3.axisLeft().scale(y);
- var xaxis = d3.axisBottom()
+        var xAxis = d3.axisBottom()
             .scale(x)
             .tickValues(this.data.map(function(d,i){
                 if(i>0) {
@@ -104,9 +88,13 @@ export default {
             }).splice(1))
             .ticks(4);
 
+        var yAxis = d3.axisLeft()
+            .scale(y)
+            .ticks(5);
 
-      return xaxis ;
+      return { x, y, xAxis,yAxis };
     },
+
     calculatePath() {
     
       const scale = this.getScales();
