@@ -6,11 +6,14 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
 -->
 
 <template>
-  <svg width="800" height="300">
+  <svg width="100%" height="100%" viewBox="0 0 800 400"
+  preserveAspectRatio="xMidYMid meet">
     
     <g class='test' v-bind:transform="translate">
-      <axis v-bind:scales="getScales()" v-bind:chartDefaults='chartDefaults' v-bind:data='data'/>
-    <path :d="line" />
+      <axis class='yA' v-bind:scales="getScales().yAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY'/>
+      <axis class='xA' v-bind:scales="getScales().xAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsX()'/>
+      <axis class='grid' v-bind:scales="getScales().yGrid" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY'/>
+    <path class='line' :d="line" />
     </g>
       
   </svg>
@@ -41,14 +44,16 @@ export default {
         width: 800,
         height: 300,
         chartId: 'linechart-redux',
-        margin:{top: 5, right: 50, bottom: 20, left: 50},
+        margin:{top: 5, right: 50, bottom: 15, left: 50},
         data: [
    
         ]
      
     },
       line: "",
-      translate:'translate(' + 50 + ',' + 5 + ')'
+      translate:'translate(' + 50 + ',' + 5 + ')',
+      trnsY:'translate(0,0)',
+      trnsX: this.getTrnsx
     };
   },
   mounted() {
@@ -60,7 +65,7 @@ console.log(this.data);
   methods: {
 
   getScales() {
-      var parseDate = d3.timeParse("%m-%d-%Y");
+          var parseDate = d3.timeParse("%m-%d-%Y");
 
     this.data.forEach(function(d) {
       d.date = parseDate(d.day);
@@ -80,7 +85,7 @@ console.log(this.data);
       d3.axisLeft().scale(y);
 
         var xAxis = d3.axisBottom()
-            .scale(x)
+            .scale(x).tickFormat(d3.timeFormat("%b-%d"))
             .tickValues(this.data.map(function(d,i){
                 if(i>0) {
                     return d.date;
@@ -91,10 +96,17 @@ console.log(this.data);
         var yAxis = d3.axisLeft()
             .scale(y)
             .ticks(5);
+      var yGrid = d3.axisLeft()
+            .scale(y)
+            .tickSize(-(this.chartDefaults.width), 0, 0)
+            .tickFormat("");
 
-      return { x, y, xAxis,yAxis };
+      return { x, y, xAxis,yAxis,yGrid };
     },
-
+getTrnsx(chartDefaults) {
+  const t="translate(0,"+(this.chartDefaults.height )+")";
+  return t
+},
     calculatePath() {
     
       const scale = this.getScales();
@@ -109,11 +121,12 @@ console.log(this.data);
   }
 };
 </script>
+<!-- css loaderhttps://vue-loader.vuejs.org/guide/scoped-css.html#mixing-local-and-global-styles -->
+<style>
 
-<style lang="sass" scoped>
 
-path
-  fill: none
-  stroke: #76BF8A
-  stroke-width: 3px
+path.line  {fill: none;
+  stroke: blue;
+  stroke-width: 3px;
+}
 </style>

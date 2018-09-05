@@ -1,8 +1,8 @@
 <template>
-  
-                <g ref="axis" :transform='translate' >
+  <g :transform='trns'>
+                <g ref="axis"  >
                 </g>
-
+</g>
 </template>
 
 <script>
@@ -11,13 +11,14 @@ import * as d3 from "d3";
 export default {
   name: "axis",
   props: {
-   scales:Object,
+   scales:Function,
    chartDefaults:Object,
-   data:Array
+   data:Array,
+   trns:String
   },
 
   data() {
-    return {translate :"translate(0,"+(this.chartDefaults.height - (this.chartDefaults.margin.top + this.chartDefaults.margin.bottom))+")",
+    return {
     width:0,
     height:0
 }
@@ -26,12 +27,15 @@ export default {
  console.log('--->');
   	var node=this.$refs.axis;
  
-
-
   // d3.select(node).call(this.scales());
-d3.select(node).call(this.scales.xAxis);
+d3.select(node).call(this.scales);
 
   }
 }
 </script>
 
+<style>
+.yA path, .grid path ,.yA .tick  line{
+  stroke: transparent;
+ }
+</style>
