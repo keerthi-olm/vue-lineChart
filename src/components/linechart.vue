@@ -24,7 +24,7 @@ import Axis from "./axis";
 export default {
     name: "vue-line-chart",
     components: {
-        axis: Axis // Using reuasble component to draw x,y axis and Grid.
+        axis: Axis // Using reusable component to draw x,y axis and Grid.
     },
     data() {
         return {
@@ -57,7 +57,7 @@ export default {
 
                 width: 800,
                 height: 300,
-                chartId: 'linechart-redux',
+                chartId: 'linechart-vue',
                 margin: {
                     top: 5,
                     right: 50,
@@ -81,6 +81,7 @@ export default {
         var scale = {};
         //Kick off drawing chart once component is mounted
         this.calculatePath();
+      
     },
     methods: {
 
@@ -133,7 +134,8 @@ export default {
                 return t
             },
         calculatePath() {
-
+                
+                //Get key calculation funtions to draw chart , Ie scale, axis mapping and plotting
                 const scale = this.getScales();
                  // Define calcultion to draw chart
                 const path = d3
@@ -165,6 +167,7 @@ path.line  {fill: none;
 .grid line {opacity: 0.05;}
 .xA line {opacity: 0.5;}
 
+/*Some fancy animation to draw chart*/
 svg .lineChart>path {
   stroke: #ecbc3a;
   fill: white;
