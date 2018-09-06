@@ -37,4 +37,5 @@ export default {
 .yA path, .grid path ,.yA .tick  line{
   stroke: transparent;
  }
+ 
 </style>

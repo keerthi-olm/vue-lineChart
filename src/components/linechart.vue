@@ -24,7 +24,7 @@ import Axis from "./axis";
 export default {
     name: "vue-line-chart",
     components: {
-        axis: Axis
+        axis: Axis // Using reuasble component to draw x,y axis and Grid.
     },
     data() {
         return {
@@ -70,6 +70,7 @@ export default {
 
             },
             line: "",
+            //Translate co-ords for chart, x axis and yaxis. This is injected into template
             translate: 'translate(' + 50 + ',' + 5 + ')',
             trnsY: 'translate(0,0)',
             trnsX: this.getTrnsx
@@ -78,12 +79,13 @@ export default {
     mounted() {
 
         var scale = {};
-
+        //Kick off drawing chart once component is mounted
         this.calculatePath();
     },
     methods: {
 
         getScales() {
+          // All the maths to work chart co ordinates and woring out Axis
                 var parseDate = d3.timeParse("%m-%d-%Y");
 
                 this.data.forEach(function(d) {
@@ -102,7 +104,8 @@ export default {
                     .range([this.chartDefaults.height, 0]);
                 d3.axisBottom().scale(x);
                 d3.axisLeft().scale(y);
-
+                
+                //Key funtions to draw X-axis,YAxis and the grid. All uses component axis 
                 var xAxis = d3.axisBottom()
                     .scale(x).tickFormat(d3.timeFormat("%b-%d"))
                     .tickValues(this.data.map(function(d, i) {
@@ -120,19 +123,19 @@ export default {
                     .scale(y)
                     .tickSize(-(this.chartDefaults.width), 0, 0)
                     .tickFormat("");
-
+                 // Return the key calculations and functions to draw the chart  
                 return {
                     x, y, xAxis, yAxis, yGrid
                 };
             },
-        getTrnsx(chartDefaults) {
+        getTrnsx(chartDefaults) { //works out translate value in realtive to dynamic height 
                 const t = "translate(0," + (this.chartDefaults.height) + ")";
                 return t
             },
         calculatePath() {
 
                 const scale = this.getScales();
-
+                 // Define calcultion to draw chart
                 const path = d3
                     .line()
                     .x((d) => {
@@ -140,7 +143,9 @@ export default {
                     })
                     .y(d => {;
                         return scale.y(d.count)
-                    }).curve(d3.curveCardinal);;
+                    }).curve(d3.curveCardinal);
+
+                 // draw line then this.line is injected into the template   
                 this.line = path(this.data);
 
             }
@@ -150,9 +155,40 @@ export default {
 <!-- css loaderhttps://vue-loader.vuejs.org/guide/scoped-css.html#mixing-local-and-global-styles -->
 <style>
 
+text {color : #325252; }
 
 path.line  {fill: none;
-  stroke: blue;
+  stroke: #ecbc3a;
   stroke-width: 3px;
 }
+
+.grid line {opacity: 0.05;}
+.xA line {opacity: 0.5;}
+
+svg .lineChart>path {
+  stroke: #ecbc3a;
+  fill: white;
+  stroke-width: 3;
+  stroke-dasharray: 4813.713;
+  stroke-dashoffset: 4813.713;
+  animation-name: draw;
+  animation-duration: 10s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+#Layer_1 {
+  width: 100%;
+}
+@keyframes draw {
+  85% {
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: transparent
+  }
+}
+
 </style>
