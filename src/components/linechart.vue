@@ -4,8 +4,8 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
 
 -->
 
-<template>
-  <svg width="100%" height="100%" viewBox="0 0 800 400"
+<template><div>
+  <svg width="100%" height="100%" viewBox="0 0 800 330"
   preserveAspectRatio="xMidYMid meet">
     
     <g class='lineChart' v-bind:transform="translate">
@@ -16,6 +16,8 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
     </g>
       
   </svg>
+  <p class='text' > {{chartDefaults.title}}</p>
+</div>
 </template>
 
 <script>
@@ -58,9 +60,10 @@ export default {
                 width: 800,
                 height: 300,
                 chartId: 'linechart-vue',
+                title: 'UK Rainfall for 2018',
                 margin: {
                     top: 5,
-                    right: 50,
+                    right: 5,
                     bottom: 15,
                     left: 50
                 },
@@ -157,7 +160,7 @@ export default {
 <!-- css loaderhttps://vue-loader.vuejs.org/guide/scoped-css.html#mixing-local-and-global-styles -->
 <style>
 
-text {color : #325252; }
+text {color: #fff;}
 
 path.line  {fill: none;
   stroke: #ecbc3a;
@@ -170,7 +173,7 @@ path.line  {fill: none;
 /*Some fancy animation to draw chart*/
 svg .lineChart>path {
   stroke: #ecbc3a;
-  fill: white;
+ 
   stroke-width: 3;
   stroke-dasharray: 4813.713;
   stroke-dashoffset: 4813.713;
@@ -186,12 +189,20 @@ svg .lineChart>path {
 }
 @keyframes draw {
   85% {
-    fill: transparent;
+   
   }
   100% {
     stroke-dashoffset: 0;
-    fill: transparent
+    
   }
 }
+.text {
+  display: inline-block;
+  font-size:3vw;
+  margin: 0.5vw 0 1.5vw;
+}
 
+svg {
+  background-color: #f47166;
+}
 </style>

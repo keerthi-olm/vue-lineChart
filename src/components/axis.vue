@@ -28,6 +28,7 @@ export default {
 
         // d3.select(node).call(this.scales());
         d3.select(node).call(this.scales);
+        
 
     }
 }
@@ -37,5 +38,5 @@ export default {
 .yA path, .grid path ,.yA .tick  line{
   stroke: transparent;
  }
- 
+
 </style>
