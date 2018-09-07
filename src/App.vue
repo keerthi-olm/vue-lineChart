@@ -9,6 +9,7 @@
 
 <script>
 import LineChart from "./components/linechart";
+import playBtn from "./assets/playBtn.svg"
 
 export default {
   name: "App",
@@ -48,4 +49,39 @@ export default {
   margin-top: 60px;
   background-color: #f47166;
 }
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: url(./assets/playBtn.svg) no-repeat top left;
+    background-size: contain;
+    color: transparent;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width:8em;
+}
+button:focus{
+    
+    border: none;
+  }
+
+button#playBtn {fill:red;}
+
+
+button:focus {
+    outline: none;
+   
+}
+
+
 </style>
+
