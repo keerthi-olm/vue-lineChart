@@ -6,7 +6,7 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
 
 <template><div>
   <svg width="100%" height="100%" viewBox="0 0 800 330"
-  preserveAspectRatio="xMidYMid meet">
+  preserveAspectRatio="xMidYMid meet" >
     
     <g class='lineChart' v-bind:transform="translate">
       <axis class='yA' v-bind:scales="getScales().yAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY'/>
@@ -15,7 +15,8 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
     <path class='line' :d="line" />
     </g>
       
-  </svg><button v-on:click="play">Play again</button>
+  </svg>
+
   <p class='text' > {{chartDefaults.title}}</p>
 </div>
 </template>
@@ -90,7 +91,7 @@ export default {
             translate: 'translate(' + 50 + ',' + 5 + ')',
             trnsY: 'translate(0,0)',
             trnsX: this.getTrnsx,
-            dummy:0
+            toggleClass:true
         };
     },
     mounted() {
@@ -100,12 +101,6 @@ export default {
         this.calculatePath();
       
     },
-         watch: {
-         dummy(newValue) {
-           console.log('this dummy');
-           this.calculatePath();
-         }
-   },
     methods: {
 
         getScales() {
@@ -174,13 +169,14 @@ export default {
                  // draw line then this.line is injected into the template   
                 this.line = path(this.data);
 
-            },
+            }
+               
 
-       play() { console.log(this.data[1].count);
-        this.$set(this.data ,'dummy', (Math.floor(Math.random() * 100))*10)
-         // this.data[1].count=(Math.floor(Math.random() * 100))*10;
-        console.log(this.data.dummy)}
     }
+
+
+
+
 };
 </script>
 <!-- css loaderhttps://vue-loader.vuejs.org/guide/scoped-css.html#mixing-local-and-global-styles -->
@@ -199,21 +195,42 @@ path.line  {fill: none;
 /*Some fancy animation to draw chart*/
 svg .lineChart>path {
   stroke: #ecbc3a;
- 
   stroke-width: 3;
   stroke-dasharray: 4813.713;
   stroke-dashoffset: 4813.713;
-  animation-name: draw;
+  animation-name: draw2;
   animation-duration: 10s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-timing-function: linear;
 }
 
+
+
+.ani2  svg .lineChart>path {
+  stroke: #ecbc3a;
+  animation-name: draw-2;
+
+}
+.ani1 svg .lineChart>path {
+  stroke: #ecbc3a;
+  animation-name: draw;
+
+}
 #Layer_1 {
   width: 100%;
 }
 @keyframes draw {
+  85% {
+   
+  }
+  100% {
+    stroke-dashoffset: 0;
+    
+  }
+}
+
+@keyframes draw-2 {
   85% {
    
   }
