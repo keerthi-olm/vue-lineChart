@@ -11,11 +11,11 @@ Good example here bar chart ---[ https://stackoverflow.com/questions/48726636/dr
     <g class='lineChart' v-bind:transform="translate">
       <axis class='yA' v-bind:scales="getScales().yAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY'/>
       <axis class='xA' v-bind:scales="getScales().xAxis" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsX()'/>
-      <axis class='grid' v-bind:scales="getScales().yGrid" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY'/>
+      <axis class='grid' v-bind:scales="getScales().yGrid" v-bind:chartDefaults='chartDefaults' v-bind:data='data' v-bind:trns='trnsY' v-bind:style="{opacity: chartDefaults.gridOpacity}"/>
     <path class='line' :d="line" />
     </g>
       
-  </svg>
+  </svg><button v-on:click="play">Play again</button>
   <p class='text' > {{chartDefaults.title}}</p>
 </div>
 </template>
@@ -31,28 +31,40 @@ export default {
     data() {
         return {
             data: [{
-                day: "02-11-2016",
+                day: "01-11-2016",
                 count: 80
             }, {
                 day: "02-12-2016",
                 count: 250
             }, {
-                day: "02-13-2016",
+                day: "03-13-2016",
                 count: 150
             }, {
-                day: "02-14-2016",
+                day: "04-14-2016",
                 count: 496
             }, {
-                day: "02-15-2016",
+                day: "05-15-2016",
                 count: 140
             }, {
-                day: "02-16-2016",
+                day: "06-16-2016",
                 count: 380
             }, {
-                day: "02-17-2016",
+                day: "07-17-2016",
+                count: 140
+            }, {
+                day: "08-17-2016",
+                count: 240
+            }, {
+                day: "09-18-2016",
+                count: 100
+            },  {
+                day: "10-18-2016",
+                count: 260
+            }, {
+                day: "11-18-2016",
                 count: 100
             }, {
-                day: "02-18-2016",
+                day: "12-18-2016",
                 count: 150
             }],
             chartDefaults: {
@@ -67,6 +79,7 @@ export default {
                     bottom: 15,
                     left: 50
                 },
+                gridOpacity: 1,
                 data: [
 
                 ]
@@ -76,7 +89,8 @@ export default {
             //Translate co-ords for chart, x axis and yaxis. This is injected into template
             translate: 'translate(' + 50 + ',' + 5 + ')',
             trnsY: 'translate(0,0)',
-            trnsX: this.getTrnsx
+            trnsX: this.getTrnsx,
+            dummy:0
         };
     },
     mounted() {
@@ -86,6 +100,12 @@ export default {
         this.calculatePath();
       
     },
+         watch: {
+         dummy(newValue) {
+           console.log('this dummy');
+           this.calculatePath();
+         }
+   },
     methods: {
 
         getScales() {
@@ -100,7 +120,7 @@ export default {
                     .domain(d3.extent(this.data, function(d) {
                         return d.date;
                     }))
-                    .rangeRound([0, this.chartDefaults.width]);
+                    .rangeRound([0, this.chartDefaults.width-100]);
                 const y = d3.scaleLinear()
                     .domain([0, d3.max(this.data, function(d) {
                         return d.count + 100;
@@ -110,8 +130,9 @@ export default {
                 d3.axisLeft().scale(y);
                 
                 //Key funtions to draw X-axis,YAxis and the grid. All uses component axis 
+                //play around with time format to get it to display as you want : d3.timeFormat("%b-%d")
                 var xAxis = d3.axisBottom()
-                    .scale(x).tickFormat(d3.timeFormat("%b-%d"))
+                    .scale(x).tickFormat(d3.timeFormat("%b"))
                     .tickValues(this.data.map(function(d, i) {
                         if (i > 0) {
                             return d.date;
@@ -125,7 +146,7 @@ export default {
                     .ticks(5);
                 var yGrid = d3.axisLeft()
                     .scale(y)
-                    .tickSize(-(this.chartDefaults.width), 0, 0)
+                    .tickSize(-(this.chartDefaults.width-100), 0, 0)
                     .tickFormat("");
                  // Return the key calculations and functions to draw the chart  
                 return {
@@ -153,7 +174,12 @@ export default {
                  // draw line then this.line is injected into the template   
                 this.line = path(this.data);
 
-            }
+            },
+
+       play() { console.log(this.data[1].count);
+        this.$set(this.data ,'dummy', (Math.floor(Math.random() * 100))*10)
+         // this.data[1].count=(Math.floor(Math.random() * 100))*10;
+        console.log(this.data.dummy)}
     }
 };
 </script>
