@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"bac",
+				"background-size"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
 				"map",
 				"maplicked"
 			],
@@ -36,10 +44,6 @@
 				"display"
 			],
 			[
-				"ba",
-				"background-size"
-			],
-			[
 				"in",
 				"inline-block"
 			],
@@ -52,18 +56,70 @@
 	"buffers":
 	[
 		{
-			"file": "linechart.vue",
+			"file": "/C/dev-work/export-repos/vue-lineChart/src/App.vue",
 			"settings":
 			{
-				"buffer_size": 3037,
-				"line_ending": "Windows"
+				"buffer_size": 1459,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/keerthi/Pictures/svgs/playBtn.svg",
+			"settings":
+			{
+				"buffer_size": 2094,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "axis.vue",
 			"settings":
 			{
-				"buffer_size": 598,
+				"buffer_size": 644,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"file": "//C/dev-work/export-repos/vue-lineChart/src/main.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "linechart.vue",
+			"settings":
+			{
+				"buffer_size": 6829,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Temp/vue-chart-example-part1.js",
+			"settings":
+			{
+				"buffer_size": 8975,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Temp/vue-chart-example-part2.js",
+			"settings":
+			{
+				"buffer_size": 3068,
+				"line_ending": "Windows",
+				"name": "<header>"
+			}
+		},
+		{
+			"contents": "\n\nvar opacity=Math.floor(Math.random() * 100);\n\n\nplay() { console.log(this.data[1].count);\n          this.$set(this.data ,'toggleClass',false)\n           // this.data[1].count=(Math.floor(Math.random() * 100))*10;\n          console.log(this.data.toggleClass)\n\n      }\n",
+			"settings":
+			{
+				"buffer_size": 268,
 				"line_ending": "Windows"
 			}
 		}
@@ -124,6 +180,7 @@
 	},
 	"file_history":
 	[
+		"/C/dev-work/temp-crap/vue-template (1)/index.html",
 		"/C/dev-work/export-repos/react-redux-d3/rdx-linechart/rdx-linechart.sublime-project",
 		"/C/dev-work/euhost/wp/wp-cron.php",
 		"/C/dev-work/export-repos/react-redux-d3/rdx-linechart/src/App.css",
@@ -250,8 +307,7 @@
 		"/C/dev-work/timline-chronology/Framer/Project/app.js",
 		"/C/wamp/www/bus-arrivals/businfo.php",
 		"/F/adass-launchpad/adass-launchpad-kids.html",
-		"/C/Users/keerthi/Desktop/adass-launchpad/adass-launchpad-elderly.html",
-		"/C/Users/keerthi/Desktop/salesview/adass-launchpad-kids.html"
+		"/C/Users/keerthi/Desktop/adass-launchpad/adass-launchpad-elderly.html"
 	],
 	"find":
 	{
@@ -272,6 +328,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"%m",
+			"cardi",
+			"getScales",
+			"test",
+			"drawAxis",
+			"botto",
+			"getx",
+			"getScaleX",
 			"tip",
 			"showtip",
 			"styl",
@@ -391,15 +455,7 @@
 			"pointer",
 			"time",
 			"renderGauge",
-			"powerGauge",
-			".pointer",
-			"_d3_refs.pointer",
-			"d3pie",
-			"colorScale",
-			".scale",
-			"tickData",
-			"start",
-			"contain"
+			"powerGauge"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -440,23 +496,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "linechart.vue",
+					"file": "/C/dev-work/export-repos/vue-lineChart/src/App.vue",
 					"settings":
 					{
-						"buffer_size": 3037,
+						"buffer_size": 1459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								312,
+								312
 							]
 						],
 						"settings":
@@ -473,10 +529,10 @@
 				},
 				{
 					"buffer": 1,
-					"file": "axis.vue",
+					"file": "/C/Users/keerthi/Pictures/svgs/playBtn.svg",
 					"settings":
 					{
-						"buffer_size": 598,
+						"buffer_size": 2094,
 						"regions":
 						{
 						},
@@ -489,9 +545,63 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"syntax": "Packages/XML/XML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 926.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "axis.vue",
+					"settings":
+					{
+						"buffer_size": 644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "//C/dev-work/export-repos/vue-lineChart/src/main.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -502,18 +612,132 @@
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 4,
+					"file": "linechart.vue",
+					"settings":
+					{
+						"buffer_size": 6829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 990.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 5,
+					"file": "/C/Temp/vue-chart-example-part1.js",
+					"settings":
+					{
+						"buffer_size": 8975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4251,
+								4259
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3438.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 6,
+					"file": "/C/Temp/vue-chart-example-part2.js",
+					"settings":
+					{
+						"buffer_size": 3068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2078,
+								2078
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<header>",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 858.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"settings":
+					{
+						"buffer_size": 268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								267,
+								49
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -557,13 +781,13 @@
 		"cols":
 		[
 			0.0,
-			0.616155660377,
+			0.552761146489,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.568667852237,
+			0.721254085814,
 			1.0
 		]
 	},
@@ -597,6 +821,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 224.0,
+	"side_bar_width": 138.0,
 	"status_bar_visible": true
 }
