@@ -198,29 +198,55 @@ svg .lineChart>path {
   stroke-width: 3;
   stroke-dasharray: 4813.713;
   stroke-dashoffset: 4813.713;
-  animation-name: draw2;
-  animation-duration: 10s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
+  -webkit-animation-name: draw2;
+          animation-name: draw2;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
 }
 
 
 
 .ani2  svg .lineChart>path {
   stroke: #ecbc3a;
-  animation-name: draw-2;
+  -webkit-animation-name: draw-2;
+          animation-name: draw-2;
 
 }
 .ani1 svg .lineChart>path {
   stroke: #ecbc3a;
-  animation-name: draw;
+  -webkit-animation-name: draw;
+          animation-name: draw;
 
 }
 #Layer_1 {
   width: 100%;
 }
+@-webkit-keyframes draw {
+  85% {
+   
+  }
+  100% {
+    stroke-dashoffset: 0;
+    
+  }
+}
 @keyframes draw {
+  85% {
+   
+  }
+  100% {
+    stroke-dashoffset: 0;
+    
+  }
+}
+
+@-webkit-keyframes draw-2 {
   85% {
    
   }
