@@ -1,4 +1,4 @@
-# test-project
+# Vue Line Chart
 
 > A Vue.js project
 
