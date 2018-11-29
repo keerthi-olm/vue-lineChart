@@ -1,6 +1,6 @@
 # Vue Line Chart
 
-> A Vue.js project
+>This project integrates d3.js  into vue.js to produce an animated line chart.
 
 ## Build Setup
 
