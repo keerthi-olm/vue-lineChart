@@ -1,6 +1,10 @@
-# Vue Line Chart
+# Vue Line Chart using D3.js
+
+![alt text](http://ui-design-coder.com/wp-content/uploads/2019/01/vue-js-chart.png)
 
 >This project integrates d3.js  into vue.js to produce an animated line chart.
+
+You can see a live example at https://codesandbox.io/s/7y300q234j
 
 ## Build Setup
 
